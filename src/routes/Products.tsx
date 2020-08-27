@@ -1,11 +1,14 @@
 import React from "react";
-import { productItems } from "../models/productItems";
+import { productItems,IProductItems } from "../models/productItems";
 import { Row, Col, Card, Container, CardHeader, CardBody } from "reactstrap";
 
 function Products() {
+
   return (
     <Container>
-      {productItems.map((prod, index) => (
+      {productItems.sort((a:IProductItems,b:IProductItems)=>{
+            return a.score - b.score;
+        }) && productItems.map((prod, index) => (
         <Card>
             <CardHeader>
                 {prod.title}
