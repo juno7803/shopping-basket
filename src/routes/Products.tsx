@@ -1,6 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {IProductItems} from '../models/productItems';
-import { Row, Col, Card, Container, CardHeader, CardBody } from "reactstrap";
+import { 
+    Row, 
+    Col, 
+    Card,
+    CardHeader, 
+    CardBody 
+} from "reactstrap";
 
 function Products({products}:any){
     return(
