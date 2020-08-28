@@ -6,7 +6,7 @@ export interface IProductItems {
   coverImage: string;
   price: number;
   score: number;
-  availableCoupon?: boolean | undefined;
+  availableCoupon?: undefined | boolean;
 }
 
 export const productItems = [

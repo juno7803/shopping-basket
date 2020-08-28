@@ -5,21 +5,17 @@ import Products from './Products';
 import Pagination from '../components/Pagination';
 
 function ProductsContainer() {
-  const [currentPage,setCurrentPage] = useState(1);
-  const [prodsPerPage] = useState(5);
-  const prods = productItems.sort((a:IProductItems,b:IProductItems)=>{
-    return a.score - b.score});
-
-  const indexOfLastProds = currentPage * prodsPerPage;
-  const indexOfFirstProds = indexOfLastProds - prodsPerPage;
-  const currentProds = prods.slice(indexOfFirstProds, indexOfLastProds);
-
-  const paginate =(pageNumber:number)=>setCurrentPage(pageNumber);
+  const [currentPage,setCurrentPage] = useState(0);
+  const prods = productItems.sort((a:IProductItems,b:IProductItems)=> (a.score - b.score));
+  const offsetLimit= 5;
+  const skipLimit = currentPage * offsetLimit;
+  const currentProds = prods.slice(skipLimit, skipLimit + offsetLimit);
+  const paginate =(pageNumber:number)=>setCurrentPage(pageNumber-1);
 
   return (
     <Container>
       <Products products={currentProds}/>
-      <Pagination prodsPerPage={prodsPerPage} totalProds={productItems.length}  paginate={paginate}/>
+      <Pagination prodsPerPage={offsetLimit} totalProds={productItems.length} paginate={paginate}/>
     </Container>
   );
 }

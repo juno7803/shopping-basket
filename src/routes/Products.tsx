@@ -13,7 +13,7 @@ function Products({products}:any){
                 <CardBody>
                     <Row>
                         <Col md="3">
-                            <img className="img-fluid" src={prod.coverImage} alt="Responsive image"/>
+                            <img className="img-fluid" src={prod.coverImage} alt="Responsive" key={index}/>
                         </Col>
                         <Col>
                             가격 : {prod.price} 원

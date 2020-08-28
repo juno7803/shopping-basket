@@ -1,5 +1,5 @@
  // coupons.ts
-export interface Icoupons{
+export interface ICoupons{
     type : string;
     title: string;
     discountRate?: number;
