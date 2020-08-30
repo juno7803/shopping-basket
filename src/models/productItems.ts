@@ -7,6 +7,7 @@ export interface IProductItems {
   price: number;
   score: number;
   availableCoupon?: undefined | boolean;
+  isCart?: boolean;
 }
 
 export const productItems = [
@@ -111,3 +112,6 @@ export const productItems = [
   },
 ];
   
+export const data = [...productItems].map((ary)=>({...ary,isCart:false})).sort((a:IProductItems,b:IProductItems)=> (a.score - b.score));
+// isCart 변수 추가, 소팅한 뒤 localStorage에 저장
+localStorage.setItem('products',JSON.stringify(data));

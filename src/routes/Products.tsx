@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {IProductItems} from '../models/productItems';
 import { 
-    Row, 
+    Button,
     Col, 
     Card,
     CardHeader, 
-    CardBody 
+    CardBody,
+    Row, 
 } from "reactstrap";
 
-function Products({products}:any){
+function Products({products,toggleCartBtn}:any){
+    useEffect(()=>{
+        console.log(products);
+    },);
+
     return(
         <>
             {products.map((prod:IProductItems,index:number)=>(
@@ -23,6 +28,17 @@ function Products({products}:any){
                         </Col>
                         <Col>
                             가격 : {prod.price} 원
+                            {prod.isCart === false? 
+                                (<Button
+                                    onClick={()=>toggleCartBtn(prod.id)}
+                                >
+                                    담기
+                                </Button>) : (
+                                <Button
+                                    onClick={()=>toggleCartBtn(prod.id)}
+                                >
+                                    빼기
+                                </Button>)}
                         </Col>
                     </Row>
                 </CardBody>
